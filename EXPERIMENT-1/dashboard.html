@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+ 
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Users</a>
+    <a href="#">Settings</a>
+    <a href="{{ url_for('login') }}">Logout</a>
+  </div>
+
+  <div class="main">
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+      <div class="card">
+        <h2>{{ total_users }}</h2>
+        <p>Total Users</p>
+      </div>
+      <div class="card">
+        <h2>{{ new_signups }}</h2>
+        <p>New Signups</p>
+      </div>
+      <div class="card">
+        <h2>{{ active_count }}</h2>
+        <p>Active Now</p>
+      </div>
+    </div>
+
+    <h2>Registered Users</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+
+     {% for user in users %}
+<tr>
+  <td>{{ user.name }}</td>
+  <td>{{ user.email }}</td>
+  <td>Active</td>
+  <td><button class="btn">View</button></td>
+</tr>
+{% endfor %}
+
+
+    </table>
+
+  </div>
+
+</body>
+</html>
